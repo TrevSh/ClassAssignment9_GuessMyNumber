@@ -6,24 +6,24 @@ int main()
 {
     srand(static_cast<unsigned int>(time(0)));
     int secretNum = rand() % 100 + 1;
-    int tries = 4;
+    int tries = 0;
     int guess = 0;
     char tryAgain;
 
-    while (guess != secretNum && tries > 1) {
+    std::cout << "\tWelcome to 'Guess My Number'!!\n\n";
+
+    do {
     std::cout << "Guess my number: \n";
     std::cin >> guess;
+    tries++;
         if (guess > secretNum) {
             std::cout << "Too high! Try again\n";
-            tries - 1;
         }
         else if (guess < secretNum) {
             std::cout << "Too low! Try again\n";
-            tries - 1;
         }
         else if (guess == secretNum){
-            std::cout << "You got it! Great job!";
-            tries = 4;
+            std::cout << "You got it in "<<tries<<" tries! Great job!";
             break;
         }
         else {
@@ -33,5 +33,6 @@ int main()
                 continue;
             }
         }
-    }
+    } while (guess != secretNum);
+    return 0;
 }
